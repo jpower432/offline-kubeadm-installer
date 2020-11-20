@@ -56,26 +56,6 @@ jobs:
         with:
           name: debian
           path: debian-x64/deb/selfextract.bsx
-  build-deb-arm:
-    runs-on: arm32v7/ubuntu
-    steps:
-      - uses: actions/checkout@v2
-      - name: build-deb-arm
-        env:
-          DOCKER_TARGET_PLATFORM: linux/arm/v7 
-          DOCKER_BUILDKIT: 1  
-        run: |  
-            cd debian-arm
-            mkdir images
-            for c in $(cat image.list); do docker pull $c && \
-             docker save $_ > images/$(date +%s).tar; \
-            done
-            docker build -o deb-arm .
-      - name: upload-debian
-        uses: actions/upload-artifact@v1
-        with:
-          name: deb-arm
-          path: debian-arm/deb-arm/selfextract.bsx
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
 #  push:

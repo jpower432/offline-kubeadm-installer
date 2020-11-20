@@ -1,0 +1,59 @@
+name: Development
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+env:
+  # TODO: Change variable to your image's name.
+  IMAGE_NAME: image
+
+jobs:
+  # Run tests.
+  # See also https://docs.docker.com/docker-hub/builds/automated-testing/
+  build-deb-arm:
+    runs-on: arm32v7/ubuntu
+    steps:
+      - uses: actions/checkout@v2
+      - name: build-deb-arm
+        env:
+          DOCKER_TARGET_PLATFORM: linux/arm/v7 
+          DOCKER_BUILDKIT: 1  
+        run: |  
+            cd debian-arm
+            mkdir images
+            for c in $(cat image.list); do docker pull $c && \
+             docker save $_ > images/$(date +%s).tar; \
+            done
+            docker build -o deb-arm .
+      - name: upload-debian
+        uses: actions/upload-artifact@v1
+        with:
+          name: deb-arm
+          path: debian-arm/deb-arm/selfextract.bsx
+  # Push image to GitHub Packages.
+  # See also https://docs.docker.com/docker-hub/builds/
+#  push:
+#    # Ensure test job passes before pushing image.
+#    needs: 
+#    - test-rhel
+#    - test-deb
+
+#    runs-on: ubuntu-latest
+#    if: github.event_name == 'push'
+
+#    steps:
+#      - uses: actions/checkout@v2
+
+#      - name: Build image
+        
+#        run: docker build . --file Dockerfile --tag image

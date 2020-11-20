@@ -18,7 +18,7 @@ RUN apt-get update && apt-get install -y apt-transport-https ca-certificates cur
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-RUN add-apt-repository "deb [arch=arm] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+RUN add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 RUN apt-get update -y
 
 # Pull yum packages

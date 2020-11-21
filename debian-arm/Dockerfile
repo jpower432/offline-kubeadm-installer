@@ -1,5 +1,5 @@
 # Build the binary
-FROM ubuntu:groovy AS build-stage
+FROM ubuntu:xenial AS build-stage
 RUN mkdir -p /build/payload/images
 RUN mkdir /build/payload/packages
 RUN mkdir /build/payload/manifests

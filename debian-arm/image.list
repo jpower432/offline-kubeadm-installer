@@ -4,6 +4,6 @@ k8s.gcr.io/kube-scheduler-arm:v1.18.8
 k8s.gcr.io/kube-proxy-arm:v1.18.8
 k8s.gcr.io/pause-arm:3.2
 k8s.gcr.io/etcd-arm:3.4.3-0
-k8s.gcr.io/coredns-arm:1.6.7
+k8s.gcr.io/coredns@sha256:c8e2c9210cae0dc5ab5bbd4f96a97786494e88d3725dbe44e8ad50223731e06e
 docker.io/weaveworks/weave-npc:2.7.0@sha256:8a4621da22a14875e300d5d0e36c3b818b9eb92ffbb078f8c614084ec80a8ab9
 docker.io/weaveworks/weave-kube:2.7.0@sha256:47074b433c27373f8ea3af79a52309c925f44f3ac7f3a5c365c33efe4816089d

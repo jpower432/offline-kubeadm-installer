@@ -20,7 +20,7 @@ env:
 jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
-  build-ubuntu-groovy-arm:
+  build-ubuntu-groovy-arm64:
     runs-on: ubuntu-latest
     steps:
       - name: checkout

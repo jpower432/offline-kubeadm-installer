@@ -50,7 +50,7 @@ jobs:
           name: ubuntu-groovy-arm
           path: ubuntu-arm/ubuntu-groovy-arm/selfextract.bsx
 
-    build-ubuntu-focal-arm:
+  build-ubuntu-focal-arm:
     runs-on: ubuntu-latest
     steps:
       - name: checkout

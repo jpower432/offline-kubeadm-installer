@@ -1,5 +1,5 @@
 # Build the binary
-FROM ubuntu:xenial AS build-stage
+FROM ubuntu:groovy AS build-stage
 RUN mkdir -p /build/payload/images
 RUN mkdir /build/payload/packages
 RUN mkdir /build/payload/manifests
@@ -18,11 +18,11 @@ RUN apt-get update && apt-get install -y apt-transport-https ca-certificates cur
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 RUN echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-RUN add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+RUN add-apt-repository "deb [arch=armhf] https://download.docker.com/linux/ubuntu bionic stable"
 RUN apt-get update -y
 
 # Pull yum packages
-RUN apt-get install -y --download-only  docker-ce=5:19.03.8~3-0~ubuntu-$(lsb_release -cs) containerd.io=1.2.13-1 docker-ce-cli=5:19.03.8~3-0~ubuntu-$(lsb_release -cs) kubeadm kubectl kubelet
+RUN apt-get install -y --download-only  docker-ce=5:19.03.8~3-0~ubuntu-bionic containerd.io=1.2.13-1 docker-ce-cli=5:19.03.8~3-0~ubuntu-bionic kubeadm kubectl kubelet
 RUN cp /var/cache/apt/archives/*.deb payload/packages/
 
 # Pull the weave-net manifest

@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Get reference directory
+directory=$(pwd)
+
+# Create Kubernetes firewall rules
+ufw allow 6443/tcp
+ufw allow 10250/tcp
+
+
+# Set iptables to see bridged traffic
+
+cat <<EOF > /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl --system
+
+# Install docker
+dpkg -i $directory/packages/*.deb
+apt-get upgrade
+
+## Create /etc/docker directory.
+mkdir /etc/docker
+
+# Setup daemon.
+cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+mkdir -p /etc/systemd/system/docker.service.d
+
+# Start Docker
+systemctl enable docker
+systemctl start docker
+
+# Load container images
+for f in $directory/images/*; do docker load -i $f; done
+
+# Start Kubelet
+
+systemctl enable kubelet
+systemctl start kubelet
+
+# Make weave-net available
+mkdir /root/manifests
+cp $directory/manifests/* /root/manifests/
+
+

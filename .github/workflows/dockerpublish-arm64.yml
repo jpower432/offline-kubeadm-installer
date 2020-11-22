@@ -1,4 +1,4 @@
-name: Development-ARM
+name: Development-ARM64
 
 on:
   push:
@@ -37,20 +37,20 @@ jobs:
         
       - name: build-image
         run: |
-            cd ubuntu-arm
+            cd ubuntu-arm64
             mkdir images
             for c in $(cat image.list); do docker pull $c && \
              docker save $_ > images/$(date +%s).tar; \
             done
-            docker buildx build --platform linux/arm/v7 -o ubuntu-groovy-arm --file Dockerfile.groovy .
+            docker buildx build --platform linux/arm64 -o ubuntu-groovy-arm64 --file Dockerfile.groovy .
                    
-      - name: upload-ubuntu-groovy-arm
+      - name: upload-ubuntu-groovy-arm64
         uses: actions/upload-artifact@v1
         with:
-          name: ubuntu-groovy-arm
-          path: ubuntu-arm/ubuntu-groovy-arm/selfextract.bsx
+          name: ubuntu-groovy-arm64
+          path: ubuntu-arm64/ubuntu-groovy-arm64/selfextract.bsx
 
-    build-ubuntu-focal-arm:
+    build-ubuntu-focal-arm64:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -67,18 +67,18 @@ jobs:
         
       - name: build-image
         run: |
-            cd ubuntu-arm
+            cd ubuntu-arm64
             mkdir images
             for c in $(cat image.list); do docker pull $c && \
              docker save $_ > images/$(date +%s).tar; \
             done
-            docker buildx build --platform linux/arm/v7 -o ubuntu-focal-arm --file Dockerfile.focal .
+            docker buildx build --platform linux/arm64 -o ubuntu-focal-arm64 --file Dockerfile.focal .
                    
-      - name: upload-ubuntu-focal-arm
+      - name: upload-ubuntu-focal-arm64
         uses: actions/upload-artifact@v1
         with:
-          name: ubuntu-focal-arm
-          path: ubuntu-arm/ubuntu-focal-arm/selfextract.bsx
+          name: ubuntu-focal-arm64
+          path: ubuntu-arm64/ubuntu-focal-arm64/selfextract.bsx
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
 #  push:

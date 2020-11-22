@@ -18,6 +18,7 @@ sysctl --system
 
 # Install docker
 dpkg -i $directory/packages/*.deb
+apt-get upgrade
 
 ## Create /etc/docker directory.
 mkdir /etc/docker

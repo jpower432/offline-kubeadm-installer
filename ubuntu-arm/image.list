@@ -1,9 +1,9 @@
-k8s.gcr.io/kube-apiserver-arm:v1.18.8
-k8s.gcr.io/kube-controller-manager-arm:v1.18.8
-k8s.gcr.io/kube-scheduler-arm:v1.18.8
-k8s.gcr.io/kube-proxy-arm:v1.18.8
-k8s.gcr.io/pause-arm:3.2
-k8s.gcr.io/etcd-arm:3.4.3-0
-k8s.gcr.io/coredns@sha256:c8e2c9210cae0dc5ab5bbd4f96a97786494e88d3725dbe44e8ad50223731e06e
+k8s.gcr.io/kube-apiserver@sha256:1d42d9b81ee77529c96080a1bb96d16e1988076400d3cf9e03c1ab2ec3df3374
+k8s.gcr.io/kube-controller-manager@sha256:7234d0c5a671232be364753c5b7e9e1278cf0c787049a0a0aa10ac0c8f3fd9fb
+k8s.gcr.io/kube-scheduler@sha256:5e637b7451784d70c7febca0626f1418fd7cff1192dcfe24b8a8e80b932686ef
+k8s.gcr.io/kube-proxy@sha256:0773aade2db3a53bc41df60885ea3593fcc840dbaa12352cb6d498f1c91a0a6a
+k8s.gcr.io/pause@sha256:927d98197ec1141a368550822d18fa1c60bdae27b78b0c004f705f548c07814f
+k8s.gcr.io/etcd@sha256:4ad90a11b55313b182afc186b9876c8e891531b8db4c9bf1541953021618d0e2
+k8s.gcr.io/coredns@sha256:73ca82b4ce829766d4f1f10947c3a338888f876fbed0540dc849c89ff256e90c
 docker.io/weaveworks/weave-npc:2.7.0@sha256:8a4621da22a14875e300d5d0e36c3b818b9eb92ffbb078f8c614084ec80a8ab9
 docker.io/weaveworks/weave-kube:2.7.0@sha256:47074b433c27373f8ea3af79a52309c925f44f3ac7f3a5c365c33efe4816089d

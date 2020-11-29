@@ -43,13 +43,22 @@ systemctl start containerd
 # Load container images
 for f in $directory/images/*; do ctr -n=k8s.io images import $f; done
 
-# Start Kubelet
+# Configure kubelet to use containerd
+echo 'Environment="KUBELET_EXTRA_ARGS=--cgroup-driver=systemd --container-runtime=remote --runtime-request-timeout=15m --container-runtime-endpoint=unix:///run/containerd/containerd.sock"' >> /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
 
+# Start Kubelet
+systemctl daemon-reload
 systemctl enable kubelet
 systemctl start kubelet
 
 # Make weave-net available
 mkdir /root/manifests
 cp $directory/manifests/* /root/manifests/
+
+#Install crictl
+tar zxvf $directory/dependecnies/crictl-1.19.0-linux-arm.tar.gz -C /usr/local/bin
+
+#Configure crictl
+echo "runtime-endpoint: unix:///run/containerd/containerd.sock" >> /etc/crictl.yaml
 
 

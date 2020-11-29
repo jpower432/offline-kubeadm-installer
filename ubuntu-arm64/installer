@@ -34,7 +34,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 
-containerd config default  /etc/containerd/config.toml
+containerd config default > /etc/containerd/config.toml
 
 # Start containerd
 systemctl enable containerd

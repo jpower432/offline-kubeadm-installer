@@ -22,7 +22,7 @@ RUN add-apt-repository "deb [arch=arm64] https://download.docker.com/linux/ubunt
 RUN apt-get update -y
 
 # Pull yum packages
-RUN apt-get install -y --download-only  containerd.io kubeadm kubectl kubelet
+RUN apt-get install -y --download-only containerd.io kubeadm kubectl kubelet
 RUN cp /var/cache/apt/archives/*.deb payload/packages/
 
 # Pull the weave-net manifest

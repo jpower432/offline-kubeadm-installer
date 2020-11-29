@@ -56,7 +56,7 @@ mkdir /root/manifests
 cp $directory/manifests/* /root/manifests/
 
 #Install crictl
-tar zxvf $directory/dependecnies/crictl-1.19.0-linux-arm.tar.gz -C /usr/local/bin
+tar zxvf $directory/dependencies/crictl-1.19.0-linux-arm64.tar.gz -C /usr/local/bin
 
 #Configure crictl
 echo "runtime-endpoint: unix:///run/containerd/containerd.sock" >> /etc/crictl.yaml

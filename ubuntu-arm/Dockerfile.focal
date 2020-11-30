@@ -30,7 +30,7 @@ RUN cp /var/cache/apt/archives/*.deb payload/packages/
 RUN curl https://cloud.weave.works/k8s/v1.16/net.yaml -o payload/manifests/weave-net.yaml
 
 # Pull crictl
-RUN curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/1.19.0/crictl-1.19.0-linux-arm.tar.gz --output payload/dependencies/crictl-1.19.0-linux-arm.tar.gz
+RUN curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-arm.tar.gz --output payload/dependencies/crictl-1.19.0-linux-arm.tar.gz
 
 # Build it
 RUN bash build

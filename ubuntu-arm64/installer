@@ -17,7 +17,7 @@ net.ipv4.ip_forward = 1
 EOF
 sysctl --system
 
-# Install docker
+# Install containerd
 dpkg -i $directory/packages/*.deb
 apt-get upgrade
 
@@ -34,6 +34,7 @@ EOF
 modprobe overlay
 modprobe br_netfilter
 
+#Edit config.toml
 containerd config default > /etc/containerd/config.toml
 
 # Start containerd

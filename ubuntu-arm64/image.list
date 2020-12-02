@@ -5,5 +5,4 @@ k8s.gcr.io/kube-proxy-arm:v1.18.8
 k8s.gcr.io/pause-arm64:3.2
 k8s.gcr.io/etcd-arm64:3.4.3-0
 k8s.gcr.io/coredns@sha256:68c20062c707a4b94092014db3f9f440e357110d0bca97dc8064488fc081ffd3
-docker.io/weaveworks/weave-npc:2.7.0@sha256:2ac153c67fd3953e8f4806c78f2c362ae70668247ed93ea92ea2554768144f43
-docker.io/weaveworks/weave-kube:2.7.0@sha256:5531f875d1d58a6d4b8c6c5e9fd7f3a0f97f7b481726ac0a560cdbf6122292dd
+quay.io/coreos/flannel@sha256:51223d328b2f85d8fe9ad35db82d564b45b03fd1002728efcf14011aff02de78

@@ -26,8 +26,8 @@ RUN apt-get update -y
 RUN apt-get install -y --download-only containerd.io kubeadm kubectl kubelet
 RUN cp /var/cache/apt/archives/*.deb payload/packages/
 
-# Pull the weave-net manifest
-RUN curl https://cloud.weave.works/k8s/v1.16/net.yaml -o payload/manifests/weave-net.yaml
+# Pull the flannel manifest
+RUN curl -L https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml -o payload/manifests/kube-flannel.yaml
 
 # Pull crictl
 RUN curl -L https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.19.0/critest-v1.19.0-linux-arm.tar.gz --output payload/dependencies/crictl-1.19.0-linux-arm.tar.gz
